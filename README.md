@@ -53,4 +53,4 @@ for detailed example please check `/example` folder.
 
 ## Additional information
 
-<a href="https://www.buymeacoffee.com/bimoajif" target="_blank"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgd3lKuAPV9303IOElJJr1f-ZvLFtAztPPOsdk2fS_w9z5GOLgop0zduT0-t_nc7wgRQ&usqp=CAU" alt="Buy Me A Coffee" height="60"></a>
+<a href="https://www.buymeacoffee.com/bimoajif" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
