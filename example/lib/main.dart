@@ -57,40 +57,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   late DraggableFloatingWidget chatFab;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   void initState() {
     chatFab = DraggableFloatingWidget(
         context: context,
-        size: const Size(100, 100),
+        size: const Size(80, 80),
         dockToSide: true,
         showDismiss: true,
-        fullHide: true,
+        fullHide: false,
         hidePercentage: 0.8,
         // childCallback: () {},
         child: Material(
           child: Container(
-            height: 100,
-            width: 100,
+            height: 80,
+            width: 80,
             color: Colors.blue,
-            child: Center(child: Text('text')),
+            child: const Center(child: Text('example')),
           ),
-        )
-        // child: TanyaSinyalkuButton(streamHandler: streamHandler),
-        );
+        ));
     super.initState();
   }
 
@@ -107,6 +93,34 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Stack(
         children: [chatFab],
       ),
+    );
+  }
+}
+
+class DraggableFloatingWidgetExample extends StatelessWidget {
+  const DraggableFloatingWidgetExample({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    DraggableFloatingWidget draggableFloatingWidget = DraggableFloatingWidget(
+        context: context,
+        size: const Size(100, 100),
+        dockToSide: false,
+        showDismiss: true,
+        fullHide: true,
+        hidePercentage: 0.8,
+        // childCallback: () {},
+        child: Material(
+          child: Container(
+            height: 100,
+            width: 100,
+            color: Colors.blue,
+            child: const Center(child: Text('example')),
+          ),
+        ));
+
+    return Scaffold(
+      body: Stack(children: [draggableFloatingWidget]),
     );
   }
 }

@@ -1,6 +1,39 @@
 import 'package:flutter/material.dart';
 
+///
+/// * IMPORTANT
+/// * To use this widget, you need to create a new [DraggableFloatingWidget]
+///   object and place it inside [Stack] widget.
+///
+
 class DraggableFloatingWidget extends StatefulWidget {
+  ///
+  /// [child], [size], and [context] is mandatory when declaring new
+  /// [DraggableFloatingWidget] object. [context] is the parent page context.
+  ///
+  /// [child] defines the content inside of [Widget]. You need to assign
+  /// desired [Widget] sized [size] since it used for calculating maximum
+  /// and minimum [Widget] location and [Widget] hide percentage. You may
+  /// also need to wrap the [child] with [Material] widget so it won't cause
+  /// error when dragging [Widget].
+  ///
+  /// [hidePercentage] extend from 0.0 to 1.0 where 0.0 = 0% and 1.0 = 100%
+  /// of [Widget]'s width. Default value for [hidePercentage] is 0.8.
+  ///
+  /// [fullHide] controls visibility of [Widget] when clicking on dismiss button.
+  /// If value equals to TRUE, [Widget] will completely gone and invisible.
+  /// If value equals to FALSE, [Widget] will visible for some % depends on
+  /// [hidePercentage].
+  ///
+  /// [showDismiss] controls visibility of dismiss button. When [showDismiss]
+  /// equals to FALSE, dismiss button will not available and [Widget] cannot be
+  /// hide. Default value for [showDismiss] is TRUE.
+  ///
+  /// [dockToSide] controls behavior position of [Widget]. By defining [dockToSide]
+  /// to TRUE, [Widget] will automatically move to either right or left side of screen
+  /// depends on [Widget] last drag position. If value equals to FALSE, [Widget]
+  /// can be placed anywhere on the screen.
+  ///
   final Size size;
   final Widget child;
   final BuildContext context;
@@ -55,25 +88,22 @@ class _DraggableFloatingWidgetState extends State<DraggableFloatingWidget> {
     hidePercentage =
         widget.hidePercentage == null ? hidePercentage : widget.hidePercentage!;
 
-    ///
     /// Get half of screen w and h of device
-    ///
     halfScreenHeight = MediaQuery.of(widget.context).size.height / 2;
     halfScreenWidth = MediaQuery.of(widget.context).size.width / 2;
 
-    // Relative half width to widget size
+    /// Relative half width to widget size
     halfWidthRelative = halfScreenWidth - (size.width / 2);
     halfHeightRelative = halfScreenHeight - (size.height / 2);
 
-    // mindy = size.height / 2;
+    /// Defines maximum and minimum position of widget position.
     mindy = MediaQuery.of(widget.context).padding.top;
     maxdy = halfScreenHeight * 2 -
         size.height -
         MediaQuery.of(widget.context).padding.bottom;
-    // maxdy = halfScreenHeight * 2 - size.height * 2;
 
-    // Inital position of widget
-    position = Offset((halfScreenWidth * 2) - (size.width + 10), maxdy);
+    /// Inital position of widget
+    position = Offset(halfScreenWidth * 2 - (size.width + 10), maxdy / 2);
 
     super.initState();
   }

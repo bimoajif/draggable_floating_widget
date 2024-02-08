@@ -11,29 +11,46 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# Draggable Floating Widget
+---
+A package provides a widget that draggable across your flutter screen.
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+## How to use
 
 ```dart
-const like = 'sample';
+import 'package:draggable_floating_widget/draggable_floating_widget.dart';
 ```
+
+```dart
+class DraggableFloatingWidgetExample extends StatelessWidget {
+  const DraggableFloatingWidgetExample({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    DraggableFloatingWidget draggableFloatingWidget = DraggableFloatingWidget(
+        context: context,
+        size: const Size(80, 80),
+        dockToSide: false,
+        showDismiss: true,
+        fullHide: true,
+        hidePercentage: 0.8,
+        child: Material(
+          child: Container(
+            height: 80,
+            width: 80,
+            color: Colors.blue,
+            child: const Center(child: Text('example')),
+          ),
+        ));
+
+    return Scaffold(
+      body: Stack(children: [draggableFloatingWidget]),
+    );
+  }
+}
+```
+for detailed example please check `/example` folder.
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+<a href="https://www.buymeacoffee.com/bimoajif" target="_blank"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgd3lKuAPV9303IOElJJr1f-ZvLFtAztPPOsdk2fS_w9z5GOLgop0zduT0-t_nc7wgRQ&usqp=CAU" alt="Buy Me A Coffee" height="60"></a>
